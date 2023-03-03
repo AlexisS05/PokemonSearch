@@ -1,0 +1,14 @@
+{
+	"name": "pokesearch",
+	"version": "1.0.0",
+	"description": "Search for any Pokemon!",
+	"main": "index.js",
+	"scripts": {
+		"start": "parcel index.html"
+	},
+	"author": "Alexis Sanchez",
+	"license": "ISC",
+	"devDependencies": {
+		"parcel": "^2.8.3"
+	}
+}
