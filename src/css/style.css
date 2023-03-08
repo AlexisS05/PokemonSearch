@@ -4,13 +4,15 @@
 	box-sizing: border-box;
 }
 
-body {
-	background-color: lightskyblue;
-}
-
 html {
 	font-size: 62.5%;
 	height: 100%;
+	font-family: 'Poppins', sans-serif;
+}
+
+body {
+	background-color: lightskyblue;
+	font-size: 1.4rem;
 }
 
 .container {
@@ -19,7 +21,7 @@ html {
 	flex-direction: column;
 	margin: 0 auto;
 	gap: 3rem;
-	width: 100rem;
+	width: 110rem;
 	height: 100%;
 	background-color: #fff;
 	margin-top: 5rem;
@@ -28,22 +30,65 @@ html {
 		0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
 }
 
+.card {
+	background: radial-gradient(circle at 50% 0%, orange 36%, #ffffff 36%);
+	width: 25rem;
+	padding: 3rem 2rem;
+	box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+	border-radius: 10px;
+}
+
 .txt-description {
-	font-size: 1.4rem;
+	font-size: 1.8rem;
 	width: 20rem;
 }
 
 .results {
 	display: flex;
-	gap: 1.2rem;
+	gap: 1rem;
 	justify-content: space-evenly;
 	flex-wrap: wrap;
 	list-style-type: none;
 }
 
 .fig {
-	height: 25rem;
+	height: 20rem;
 	width: 20rem;
-	border-radius: 20px;
-	object-fit: cover;
+	display: block;
+	position: relative;
+	margin: 2rem auto;
+}
+
+.hp {
+	width: 6rem;
+	background-color: #ffffff;
+	text-align: center;
+	padding: 0.8rem 0;
+	border-radius: 30px;
+	margin-left: auto;
+	font-weight: 400;
+}
+
+.types {
+	display: flex;
+	justify-content: space-around;
+	margin: 0.2rem 0 0.4rem 0;
+}
+
+.hp span,
+.types span {
+	font-size: 1.2rem;
+	letter-spacing: 0.4px;
+	font-weight: 600;
+}
+
+.stats {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	text-align: center;
+}
+
+.stats p {
+	color: #404060;
 }

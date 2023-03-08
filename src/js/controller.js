@@ -7,7 +7,6 @@ const controlPokemon = async function () {
 		await model.loadPokemon();
 
 		resultView.render(model.state.pokemon);
-		console.log(model.state.pokemon);
 	} catch (err) {
 		console.error(err);
 	}
