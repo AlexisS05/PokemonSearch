@@ -20,7 +20,7 @@ class ResultsView extends View {
 						<div class="card" style="background: radial-gradient(circle at 50% 0%, ${
 							result.colors
 						} 36%, #ffffff 36%)">
-							<p class="hp"><span>HP</span>80</p>
+							<p class="hp"><span>HP</span>${result.hp}</p>
 							<figure class="preview__fig">
 								<img class="fig" src="${result.image}" />
 							</figure>
@@ -36,15 +36,15 @@ class ResultsView extends View {
 							</div>
 							<div class="stats">
 								<div>
-									<h3>60</h3>
+									<h3>${result.attack}</h3>
 									<p>Attack</p>
 								</div>
 								<div>
-									<h3>60</h3>
+									<h3>${result.defense}</h3>
 									<p>Defense</p>
 								</div>
 								<div>
-									<h3>60</h3>
+									<h3>${result.speed}</h3>
 									<p>Speed</p>
 								</div>
 							</div>

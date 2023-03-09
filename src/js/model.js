@@ -12,42 +12,77 @@ const fetchJson = (url) =>
 	fetch(url)
 		.then((r) => r.json())
 		.catch(console.log);
+
 export const loadPokemon = async () => {
-	const [arrayA, arrayB] = await Promise.all([
-		Promise.all(
-			new Array(1008)
-				.fill(0)
-				.map((_, i) => fetchJson(`https://pokeapi.co/api/v2/pokemon/${i + 1}`))
-		),
-		Promise.all(
-			new Array(151)
-				.fill(0)
-				.map((_, i) =>
-					fetchJson(`https://pokeapi.co/api/v2/pokemon-species/${i + 1}`)
-				)
-		),
-	]);
+	try {
+		const [arrayA, arrayB] = await Promise.all([
+			Promise.all(
+				new Array(1008)
+					.fill(0)
+					.map((_, i) =>
+						fetchJson(`https://pokeapi.co/api/v2/pokemon/${i + 1}`)
+					)
+			),
+			Promise.all(
+				new Array(151)
+					.fill(0)
+					.map((_, i) =>
+						fetchJson(`https://pokeapi.co/api/v2/pokemon-species/${i + 1}`)
+					)
+			),
+		]);
 
-	state.pokemon = arrayA.map((poke) => {
-		const types = poke.types.map((el) => el.type.name);
-		const main_types = Object.keys(typeColor);
-		const typeFind = main_types.find((type) => {
-			return types.indexOf(type) > -1;
+		state.pokemon = arrayA.map((poke) => {
+			const types = poke.types.map((el) => el.type.name);
+			const main_types = Object.keys(typeColor);
+			const typeFind = main_types.find((type) => {
+				return types.indexOf(type) > -1;
+			});
+
+			return {
+				name: poke.name,
+				image: poke.sprites.front_default,
+				types: poke.types,
+				colors: typeColor[typeFind],
+				attack: poke.stats[1].base_stat,
+				hp: poke.stats[0].base_stat,
+				defense: poke.stats[2].base_stat,
+				speed: poke.stats[5].base_stat,
+			};
 		});
-		console.log(typeFind);
 
-		return {
-			name: poke.name,
-			image: poke.sprites.front_default,
-			types: poke.types,
-			colors: typeColor[typeFind],
-		};
-	});
-
-	console.log(state.pokemon);
-	console.log(arrayA);
-	console.log(arrayB);
+		console.log(state.pokemon);
+		console.log(arrayA);
+	} catch (err) {
+		console.error(err);
+	}
 };
+
+export const loadPokemonResults = async function (query) {
+	try {
+		state.search.query = query;
+
+		const data = await fetchJson(`https://pokeapi.co/api/v2/pokemon/${query}`);
+		console.log(data);
+
+		state.search.results = {
+			name: data.name,
+			image: data.sprites.front_default,
+			types: data.types,
+			colors: typeColor[data.types[0].type.name],
+			attack: data.stats[1].base_stat,
+			hp: data.stats[0].base_stat,
+			defense: data.stats[2].base_stat,
+			speed: data.stats[5].base_stat,
+		};
+		console.log(state.search.results);
+	} catch (err) {
+		console.error(err);
+	}
+};
+
+loadPokemonResults('greninja');
+
 export const typeColor = {
 	bug: '#26de81',
 	dragon: '#ffeaa7',
