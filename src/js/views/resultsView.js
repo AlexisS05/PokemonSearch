@@ -1,12 +1,15 @@
 import View from './View.js';
-import * as model from '../model.js';
 
 class ResultsView extends View {
 	_parentElement = document.querySelector('.results');
 
 	_generateMarkup() {
 		console.log(this._data);
-		return this._data.map(this._generateMarkupPreview).join('');
+		const check =
+			this._data.length >= 1
+				? this._data.map(this._generateMarkupPreview).join('')
+				: this._generateMarkupPreview(this._data);
+		return check;
 	}
 
 	addHandlerRender(handler) {

@@ -1,6 +1,6 @@
 import * as model from './model.js';
 import resultView from './views/resultsView.js';
-import View from './Views/View.js';
+import searchView from './views/searchView.js';
 
 const controlPokemon = async function () {
 	try {
@@ -12,7 +12,21 @@ const controlPokemon = async function () {
 	}
 };
 
+const controlSearchResults = async function () {
+	try {
+		const query = searchView.getQuery();
+		if (!query) return;
+
+		await model.loadPokemonResults(query);
+
+		resultView.render(model.getSearchResultsPage());
+	} catch (err) {
+		console.error(err);
+	}
+};
+
 const init = function () {
 	resultView.addHandlerRender(controlPokemon);
+	searchView.addHandlerSearch(controlSearchResults);
 };
 init();

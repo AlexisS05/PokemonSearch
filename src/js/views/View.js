@@ -7,12 +7,26 @@ export default class View {
 
 		this._data = data;
 		const markup = this._generateMarkup();
-
 		this._clear();
 		this._parentElement.insertAdjacentHTML('afterbegin', markup);
 	}
 
 	_clear() {
 		this._parentElement.innerHTML = '';
+	}
+
+	renderError(message = this._errorMessage) {
+		const markup = `
+      <div class="error">
+        <div>
+          <svg>
+      
+          </svg>
+        </div>
+        <p>${message}</p>
+      </div>
+    `;
+		this._clear();
+		this._parentElement.insertAdjacentHTML('afterbegin', markup);
 	}
 }

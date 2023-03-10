@@ -63,7 +63,7 @@ export const loadPokemonResults = async function (query) {
 		state.search.query = query;
 
 		const data = await fetchJson(`https://pokeapi.co/api/v2/pokemon/${query}`);
-		console.log(data);
+		// console.log(data);
 
 		state.search.results = {
 			name: data.name,
@@ -75,13 +75,15 @@ export const loadPokemonResults = async function (query) {
 			defense: data.stats[2].base_stat,
 			speed: data.stats[5].base_stat,
 		};
-		console.log(state.search.results);
+		// console.log(state.search.results);
 	} catch (err) {
 		console.error(err);
 	}
 };
 
-loadPokemonResults('greninja');
+export const getSearchResultsPage = function () {
+	return state.search.results;
+};
 
 export const typeColor = {
 	bug: '#26de81',
