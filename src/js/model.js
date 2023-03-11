@@ -23,13 +23,7 @@ export const loadPokemon = async () => {
 						fetchJson(`https://pokeapi.co/api/v2/pokemon/${i + 1}`)
 					)
 			),
-			Promise.all(
-				new Array(151)
-					.fill(0)
-					.map((_, i) =>
-						fetchJson(`https://pokeapi.co/api/v2/pokemon-species/${i + 1}`)
-					)
-			),
+			// Promise.all(new Array(151).fill(0).map((_, i) => fetchJson())),
 		]);
 
 		state.pokemon = arrayA.map((poke) => {
@@ -40,6 +34,7 @@ export const loadPokemon = async () => {
 			});
 
 			return {
+				id: poke.id,
 				name: poke.name,
 				image: poke.sprites.front_default,
 				types: poke.types,

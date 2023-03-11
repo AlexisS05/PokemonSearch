@@ -25,7 +25,9 @@ class ResultsView extends View {
 						} 36%, #ffffff 36%)">
 							<p class="hp"><span>HP</span>${result.hp}</p>
 							<figure class="preview__fig">
-								<img class="fig" src="${result.image}" />
+								<img class="fig" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${
+									result.id
+								}.png" />
 							</figure>
 							<h4 class="txt-description">${
 								result.name[0].toUpperCase() + result.name.slice(1)
