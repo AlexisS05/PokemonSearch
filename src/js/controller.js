@@ -4,6 +4,8 @@ import searchView from './views/searchView.js';
 
 const controlPokemon = async function () {
 	try {
+		resultView.renderSpinner();
+
 		await model.loadPokemon();
 
 		resultView.render(model.state.pokemon);

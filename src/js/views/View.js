@@ -1,3 +1,5 @@
+import icons from 'url:../../../src/img/icons.svg';
+
 export default class View {
 	_data;
 
@@ -14,6 +16,18 @@ export default class View {
 	_clear() {
 		this._parentElement.innerHTML = '';
 	}
+
+	renderSpinner = function () {
+		const markup = `
+    <div class="spinner">
+      <svg>
+        <use href="${icons}#icon-loader"></use>
+      </svg>
+    </div>
+  `;
+		this._clear();
+		this._parentElement.insertAdjacentHTML('afterbegin', markup);
+	};
 
 	renderError(message = this._errorMessage) {
 		const markup = `

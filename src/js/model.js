@@ -32,11 +32,17 @@ export const loadPokemon = async () => {
 			const typeFind = main_types.find((type) => {
 				return types.indexOf(type) > -1;
 			});
+			const changeName = [Object.keys(poke.sprites.other)]
+				.join('')
+				.replaceAll('-', '_')
+				.split(',');
+			const newImageName = { changeName: Object.values(poke.sprites.other) };
+			// console.log(newImageName.changeName[2].front_default);
 
 			return {
 				id: poke.id,
 				name: poke.name,
-				image: poke.sprites.front_default,
+				image: newImageName.changeName[2].front_default,
 				types: poke.types,
 				colors: typeColor[typeFind],
 				attack: poke.stats[1].base_stat,
@@ -59,10 +65,14 @@ export const loadPokemonResults = async function (query) {
 
 		const data = await fetchJson(`https://pokeapi.co/api/v2/pokemon/${query}`);
 		// console.log(data);
+		const newImageName = {
+			changeName: Object.values(data.sprites.other),
+		};
+		// console.log(newImageName.changeName[2].front_default);
 
 		state.search.results = {
 			name: data.name,
-			image: data.sprites.front_default,
+			image: newImageName.changeName[2].front_default,
 			types: data.types,
 			colors: typeColor[data.types[0].type.name],
 			attack: data.stats[1].base_stat,
