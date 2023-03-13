@@ -2,10 +2,11 @@
 	"name": "pokesearch",
 	"version": "1.0.0",
 	"description": "Search for any Pokemon!",
-	"main": "index.js",
+	"default": "index.js",
 	"type": "module",
 	"scripts": {
-		"start": "parcel index.html"
+		"start": "parcel index.html",
+		"build": "parcel build index.html --dist-dir ./dist"
 	},
 	"author": "Alexis Sanchez",
 	"license": "ISC",

@@ -71,13 +71,13 @@ body {
 
 .types {
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-evenly;
 	margin: 0.2rem 0 0.4rem 0;
 }
 
 .hp span,
 .types span {
-	font-size: 1.2rem;
+	font-size: 1.4rem;
 	letter-spacing: 0.4px;
 	font-weight: 600;
 }
