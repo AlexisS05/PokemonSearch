@@ -5,7 +5,6 @@ class ResultsView extends View {
 	_parentElement = document.querySelector('.results');
 
 	_generateMarkup() {
-		console.log(this._data);
 		const check =
 			this._data.length >= 1
 				? this._data.map(this._generateMarkupPreview).join('')

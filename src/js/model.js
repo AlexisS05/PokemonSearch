@@ -51,9 +51,6 @@ export const loadPokemon = async () => {
 				speed: poke.stats[5].base_stat,
 			};
 		});
-
-		console.log(state.pokemon);
-		console.log(arrayA);
 	} catch (err) {
 		console.error(err);
 	}
