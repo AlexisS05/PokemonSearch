@@ -23,6 +23,7 @@ class ResultsView extends View {
 						<div class="card" style="background: radial-gradient(circle at 50% 0%, ${
 							result.colors
 						} 36%, #ffffff 36%)">
+						<p class="dex-num">#${result.id}</p>
 							<p class="hp"><span>HP</span>${result.hp}</p>
 							<figure class="preview__fig">
 								<img class="fig" src="${result.image}" />
