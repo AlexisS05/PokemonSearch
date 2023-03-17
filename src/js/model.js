@@ -32,12 +32,7 @@ export const loadPokemon = async () => {
 			const typeFind = main_types.find((type) => {
 				return types.indexOf(type) > -1;
 			});
-			const changeName = [Object.keys(poke.sprites.other)]
-				.join('')
-				.replaceAll('-', '_')
-				.split(',');
 			const newImageName = { changeName: Object.values(poke.sprites.other) };
-			// console.log(newImageName.changeName[2].front_default);
 
 			return {
 				id: poke.id,
@@ -65,7 +60,6 @@ export const loadPokemonResults = async function (query) {
 		const newImageName = {
 			changeName: Object.values(data.sprites.other),
 		};
-		// console.log(newImageName.changeName[2].front_default);
 
 		state.search.results = {
 			name: data.name,

@@ -36,7 +36,12 @@ class ResultsView extends View {
 									result.types[0]?.type.name[0].toUpperCase() +
 									result.types[0].type.name.slice(1)
 								}</span>
-								<span>${result.types[1]?.type.name ?? ''}</span>
+								<span>${
+									result.types[1]
+										? result.types[1]?.type.name[0].toUpperCase() +
+										  result.types[1]?.type.name.slice(1)
+										: ' '
+								}</span>
 							</div>
 							<div class="stats">
 								<div>
