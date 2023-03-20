@@ -3,8 +3,11 @@ import icons from 'url:../../../src/img/icons.svg';
 
 class ResultsView extends View {
 	_parentElement = document.querySelector('.results');
+	_errorMessage = 'No Pokemon found for your query! Please try again!';
+	_message = '';
 
 	_generateMarkup() {
+		console.log(this._data);
 		const check =
 			this._data.length >= 1
 				? this._data.map(this._generateMarkupPreview).join('')

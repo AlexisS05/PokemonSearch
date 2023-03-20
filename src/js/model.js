@@ -1,3 +1,5 @@
+import resultsView from './views/resultsView';
+
 export const state = {
 	pokemon: {},
 	search: {
@@ -62,6 +64,7 @@ export const loadPokemonResults = async function (query) {
 		};
 
 		state.search.results = {
+			id: data.id,
 			name: data.name,
 			image: newImageName.changeName[2].front_default,
 			types: data.types,
@@ -73,7 +76,7 @@ export const loadPokemonResults = async function (query) {
 		};
 		// console.log(state.search.results);
 	} catch (err) {
-		console.error(err);
+		throw err;
 	}
 };
 

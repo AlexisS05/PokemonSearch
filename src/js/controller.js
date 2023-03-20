@@ -23,7 +23,7 @@ const controlSearchResults = async function () {
 
 		resultView.render(model.getSearchResultsPage());
 	} catch (err) {
-		console.error(err);
+		resultView.renderError();
 	}
 };
 
