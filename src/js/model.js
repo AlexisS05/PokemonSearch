@@ -1,5 +1,3 @@
-import resultsView from './views/resultsView';
-
 export const state = {
 	pokemon: {},
 	search: {
@@ -19,7 +17,7 @@ export const loadPokemon = async () => {
 	try {
 		const [arrayA, arrayB] = await Promise.all([
 			Promise.all(
-				new Array(1008)
+				new Array(900)
 					.fill(0)
 					.map((_, i) =>
 						fetchJson(`https://pokeapi.co/api/v2/pokemon/${i + 1}`)
